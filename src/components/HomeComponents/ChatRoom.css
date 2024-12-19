@@ -39,7 +39,7 @@
   font-size: 12px;
 }
 
-/* User list styling */
+/* - list styling */
 .users-list {
   padding: 12px;
   background-color: #f8f9fa;
@@ -107,13 +107,10 @@
 /* User list takes 25% of the space */
 .user-list {
   flex: 0 0 25%;
+  min-width: 250px;
   background-color: #f0f0f0;
   padding: 10px;
-  /* border-radius: 8px; */
-  /* overflow-y: hidden; */
-  /* max-height: calc(100vh - 80px); */
   height: 100%;
-  /* Ensure the user list is scrollable but doesn't overflow */
 }
 
 /* Chat box takes the remaining space */
@@ -194,4 +191,14 @@
   padding-top: 15px;
   text-align: center;
   font-size: 14px;
+}
+
+.chat-timeStamp {
+  color: #494949;
+  font-size: 12px;
+  font-family: math;
+}
+
+.pointer {
+  cursor: pointer;
 }

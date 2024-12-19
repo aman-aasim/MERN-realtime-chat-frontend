@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import Login from './components/AuthComponents/Login';
 import ChatRoom from './components/HomeComponents/ChatRoom';
+import Signup from './components/AuthComponents/Signup';
 
 function App() {
   return (
     <AuthProvider>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route
             path="/chatRoom"
             element={

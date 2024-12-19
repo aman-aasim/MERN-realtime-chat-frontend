@@ -7,20 +7,23 @@
 /* Logout button styling */
 .logout-button {
   margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
   color: #ffffff;
-  background-color: #009E6A;
+  background-color: #00c584;
   /* Green color for logout button */
   border: 1px solid #ffffff;
-  padding: 8px 20px;
+  padding: 0px 20px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
+  height: 40px;
 }
 
 .logout-button:hover {
-  background-color: #83ceb5;
+  background-color: #038358;
   /* Light green on hover */
   color: white;
   /* Text color changes to white */
@@ -98,7 +101,7 @@
 .chat-body {
   display: flex;
   flex-direction: row;
-  height: calc(80vh);
+  height: calc(75vh);
   /* padding: 20px; */
   /* margin-bottom: 60px; */
   overflow: hidden;
@@ -201,4 +204,10 @@
 
 .pointer {
   cursor: pointer;
+}
+
+.logout-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center align items */
 }

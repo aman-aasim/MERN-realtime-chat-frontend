@@ -93,6 +93,15 @@ function ChatRoom() {
     setMessage("");
   };
 
+  // Add this useEffect to update the time every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   // Fetch chat history for a user
   const getChatHistory = async (userId) => {
     try {
@@ -122,12 +131,15 @@ function ChatRoom() {
           <div className="d-flex justify-content-between">
             <div className="col-6">
               <h5>{loggedInUser?.name}</h5>
+              <h6>{loggedInUser?.mobile}</h6>
             </div>
             <div className="col-6 d-flex justify-content-end header-right">
-              <span className="time">{time.toLocaleTimeString()}</span>
-              <button className="logout-button" onClick={handleLogout}>
-                Logout
-              </button>
+              <div className="logout-container">
+                <button className="logout-button" onClick={handleLogout}>
+                  Logout
+                </button>
+                <div className="time">{time.toLocaleTimeString()}</div>
+              </div>
             </div>
           </div>
         </header>
@@ -223,7 +235,7 @@ function ChatRoom() {
         </div>
 
         <footer className="dashboard-footer">
-          <p>&copy; 2024 Simple Company</p>
+          <p>&copy;2024 MERN Real time Chat System</p>
         </footer>
       </div>
     </div>

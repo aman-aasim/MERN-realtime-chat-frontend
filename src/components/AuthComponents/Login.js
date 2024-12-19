@@ -16,7 +16,7 @@ const Login = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         const user = JSON.parse(localStorage.getItem('loggedInUser'));
-        
+
         if (token && user) {
             setLoggedInUser(user);
             setIsAuthenticated(true);
@@ -59,6 +59,29 @@ const Login = () => {
         }
     };
 
+    const insertLargedata = async () => {
+
+        try {
+            const baseURL = process.env.REACT_APP_BASE_URL;
+            const response = await axios.get(`${baseURL}/data/store`);
+
+            iziToast.success({
+                title: "Success",
+                message: "Data Stored Successful!",
+                position: "topRight",
+            });
+
+        } catch (error) {
+            const errorMessage =
+                error.response?.data?.message || "Invalid credentials!";
+            iziToast.error({
+                title: "Error",
+                message: errorMessage,
+                position: "topRight",
+            });
+        }
+    };
+
 
     return (
         <div className="login-container">
@@ -89,6 +112,11 @@ const Login = () => {
                 <p className="login-footer">
                     Don't have an account? <a href="/signup">Sign Up</a>
                 </p>
+
+                {/* API To insert 100,000 random data in table in single click */}
+                {/* <p className="login-footer pointer" onClick={() => insertLargedata()}>
+                    Insert Data
+                </p> */}
             </div>
         </div>
     );

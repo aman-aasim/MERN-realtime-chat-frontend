@@ -130,7 +130,9 @@ function ChatRoom() {
         <header className="dashboard-header p-3 border-bottom">
           <div className="d-flex justify-content-between">
             <div className="col-6">
-              <h5>{loggedInUser?.name}</h5>
+              <a href="/home">
+                <h5>{loggedInUser?.name}</h5>
+              </a>
               <h6>{loggedInUser?.mobile}</h6>
             </div>
             <div className="col-6 d-flex justify-content-end header-right">

@@ -1,26 +1,37 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import Login from './components/AuthComponents/Login';
 import ChatRoom from './components/HomeComponents/ChatRoom';
-// import './App.css'; // Import your CSS file
 
 function App() {
-  const { isAuthenticated } = useContext(AuthContext);
   return (
     <AuthProvider>
         <Routes>
-          <Route
-            path="/"
-            element={<Login />}
-          />
+          <Route path="/" element={<Login />} />
           <Route
             path="/chatRoom"
-            element={isAuthenticated ? <ChatRoom /> : <Navigate to="/" replace />}
+            element={
+              <ProtectedRoute>
+                <ChatRoom />
+              </ProtectedRoute>
+            }
           />
         </Routes>
     </AuthProvider>
   );
 }
+
+// A ProtectedRoute to check if the user is authenticated
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = React.useContext(AuthContext);
+
+  if (isAuthenticated === null) {
+    // Show a loader until authentication is determined
+    return <div>Loading...</div>;
+  }
+
+  return isAuthenticated ? children : <Navigate to="/" replace />;
+};
 
 export default App;
